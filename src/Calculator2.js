@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
+import './button.css';
 
 
-const Calculator = () => {
+const Calculator2 = () => {
     let display = 0
     let buttonClick = (num) =>{
         return () => {
@@ -21,3 +22,7 @@ const Calculator = () => {
 
     )
 }
+
+export default Calculator2
+
+

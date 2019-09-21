@@ -1,26 +1,35 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+
+
 
 const Counter = () => {
-    let [count, setState] = useState(0)
-    let handleClick = () => {
-        setState(count+1)
+   
+    let counterData = JSON.parse(localStorage.getItem('counter'))
+    let [count, setState] = useState(counterData || 0)
+    let handleClickPlus = () => {
+        setState(count + 1)
     }
     let handleClickMinus = () => {
-        setState(count -1)
+        setState(count - 1)
     }
-
     let handleClickReset = () => {
         setState(0)
     }
-    
+
+    useEffect(() => {
+        localStorage.setItem('counter', JSON.stringify(count))
+    })
+
     return(
         <div>
             <p>you clicked {count}</p>
-            <button onClick={handleClick}> Plus 1</button>
+            <button onClick={handleClickPlus}> Plus 1</button>
+            <button onClick={handleClickMinus}> Minus 1</button>
+            <button onClick={handleClickReset}> Reset</button>
         </div>
 
     )
 
 
     }
-    
+    export  default Counter
